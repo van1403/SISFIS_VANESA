@@ -10,6 +10,16 @@ Permite crear, editar, listar y eliminar informes, con vista previa en tiempo re
 - Express
 - HTML, CSS y JavaScript
 
+## Paquetes
+
+| Paquete | Versión | Para qué se usa |
+|---|---|---|
+| [express](https://expressjs.com) | ^5.3.0 | Servidor web: entrega la página y la API de informes (`/api/informes`) |
+
+Además, el servidor usa los módulos `fs` y `path`, que vienen incluidos en Node.js y no se instalan aparte.
+
+Las fuentes de letra (DM Sans, Fraunces y Poppins) se cargan desde Google Fonts, por lo que se necesita conexión a internet para verlas.
+
 ## Requisitos
 
 - [Node.js](https://nodejs.org) instalado
@@ -33,6 +43,7 @@ Permite crear, editar, listar y eliminar informes, con vista previa en tiempo re
 
    ```bash
    npm install
+   npm install express
    ```
 
 4. Iniciar el servidor:
