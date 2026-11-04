@@ -1,7 +1,7 @@
 'use strict';
 
 /* =========================================================
-   SISFIS_RUBY – Informes de supervisión
+   SISFIS_VANESA – Informes de supervisión
    Formulario + vista previa idéntica al Word modelo
    ========================================================= */
 
@@ -926,8 +926,8 @@ function nombreArchivo(x, ext) {
 // del mismo archivo, así Word las muestra sin depender de ninguna carpeta.
 // imagenes: [{ ruta, tipo, base64 }]
 function paqueteWord(html, imagenes = []) {
-  const limite = '----=_SISFIS_RUBY_' + Date.now();
-  const base = 'file:///C:/SISFIS_RUBY/';
+  const limite = '----=_SISFIS_VANESA_' + Date.now();
+  const base = 'file:///C:/SISFIS_VANESA/';
   const htmlB64 = bytesABase64(new TextEncoder().encode(html));
 
   let mhtml = 'MIME-Version: 1.0\r\n'

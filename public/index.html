@@ -3,427 +3,453 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SISFIS_RUBY | Informes de fiscalización</title>
+  <title>SISFIS_VANESA | Informes de fiscalización</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <header class="encabezado">
-    <div class="encabezado-inner">
-      <span class="encabezado-logo"><img src="logo.png" alt="Logo de la empresa supervisora"></span>
-      <div class="encabezado-texto">
-        <h1>SISFIS_RUBY</h1>
-        <p>Sistema de Informes de Fiscalización</p>
-      </div>
-    </div>
-  </header>
+  <div class="app">
 
-  <main class="contenedor">
-
-    <!-- ===================== COLUMNA IZQUIERDA: FORMULARIO ===================== -->
-    <div class="columna-form" id="seccionRegistro">
-
-      <div class="intro">
-        <h2 id="tituloForm">Registro de informe de fiscalización</h2>
-        <p class="sub">Complete cada sección. La vista previa se actualiza mientras escribe.</p>
-
-        <div class="aviso" id="avisoMarcadores">
-          <button type="button" class="aviso-cerrar" id="cerrarAviso" aria-label="Cerrar aviso">×</button>
-          <strong>Marcadores automáticos.</strong>
-          Escriba <code>{{expediente}}</code>, <code>{{empresa}}</code>, <code>{{placa}}</code> o
-          <code>{{registro}}</code> en cualquier texto y se reemplazarán en todo el informe.
-          Use <code>**texto**</code> para negrita.
+    <!-- ===================== BARRA LATERAL ===================== -->
+    <aside class="lateral">
+      <div class="marca">
+        <span class="marca-logo"><img src="logo.png" alt="Logo de la empresa supervisora"></span>
+        <div class="marca-texto">
+          <h1>SISFIS<span>_VANESA</span></h1>
+          <p>Informes de fiscalización</p>
         </div>
       </div>
 
-      <form id="form" autocomplete="off">
+      <nav class="indice" aria-label="Secciones del informe">
+        <p class="indice-titulo">Secciones</p>
+        <a href="#sec-datos"><b>01</b> Datos generales</a>
+        <a href="#sec-objetivo"><b>02</b> Objetivo</a>
+        <a href="#sec-antecedentes"><b>03</b> Antecedentes</a>
+        <a href="#sec-base"><b>04</b> Base legal</a>
+        <a href="#sec-descripcion"><b>05</b> Descripción general</a>
+        <a href="#sec-visita"><b>06</b> Visita</a>
+        <a href="#sec-anexos"><b>07</b> Anexos</a>
+        <a href="#sec-conclusiones"><b>08</b> Conclusiones</a>
+        <a href="#sec-recomendaciones"><b>09</b> Recomendaciones</a>
+        <a href="#sec-firmas"><b>10</b> Firmas</a>
+        <p class="indice-titulo">Gestión</p>
+        <a href="#informes"><b>☰</b> Informes registrados</a>
+        <a href="#vista-previa"><b>◧</b> Vista previa</a>
+      </nav>
 
-        <!-- 1. DATOS GENERALES -->
-        <section class="card">
-          <div class="card-titulo"><span class="paso">1</span><h3>Datos generales</h3></div>
-
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="expediente">Número de expediente *</label>
-              <input type="text" id="expediente" placeholder="Ejemplo: 202600000000" required>
-            </div>
-            <div class="form-group">
-              <label for="empresa">Agente fiscalizado / Empresa *</label>
-              <input type="text" id="empresa" placeholder="Ejemplo: Transportes Modelo Demostrativo S.A.C." required>
-            </div>
-            <div class="form-group">
-              <label for="placa">Placa de la unidad vehicular</label>
-              <input type="text" id="placa" placeholder="Ejemplo: ABC-000">
-            </div>
-            <div class="form-group">
-              <label for="registro">N.° de Registro de Hidrocarburos</label>
-              <input type="text" id="registro" placeholder="Ejemplo: 00000-060-000000">
-            </div>
-            <div class="form-group">
-              <label for="numeroInforme">Número de informe</label>
-              <input type="text" id="numeroInforme" placeholder="Ejemplo: 0001-2026">
-            </div>
-            <div class="form-group">
-              <label for="empresaSupervisora">Empresa supervisora</label>
-              <input type="text" id="empresaSupervisora" placeholder="Ejemplo: Supervisión Técnica Demostrativa E.I.R.L.">
-            </div>
-            <div class="form-group">
-              <label for="ciudad">Ciudad</label>
-              <input type="text" id="ciudad" placeholder="Ejemplo: Huánuco">
-            </div>
-            <div class="form-group">
-              <label for="fecha">Fecha del informe</label>
-              <input type="date" id="fecha">
-            </div>
-            <div class="form-group">
-              <label for="cartaLinea">Carta Línea N.°</label>
-              <input type="text" id="cartaLinea" placeholder="Ejemplo: 0000000-0">
-            </div>
-            <div class="form-group">
-              <label for="fechaVisita">Fecha de la visita de fiscalización</label>
-              <input type="date" id="fechaVisita">
-            </div>
-          </div>
-
-          <h4 class="subtitulo">Destinatario, remitente y asunto</h4>
-
-          <div class="form-group">
-            <label for="destinatario">A (destinatario)</label>
-            <input type="text" id="destinatario" placeholder="Ejemplo: Oficina Regional Huánuco">
-          </div>
-
-          <div class="form-group">
-            <label for="copias">Otros destinatarios – C/c <span class="nota">· opcional, va en el recuadro junto al título</span></label>
-            <input type="text" id="copias" placeholder="Ejemplo: Archivo">
-          </div>
-
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="supervisor">De (supervisor responsable)</label>
-              <input type="text" id="supervisor" placeholder="Ejemplo: Carlos Ejemplo Rivera">
-            </div>
-            <div class="form-group">
-              <label for="supervisorCargo">Cargo del supervisor</label>
-              <input type="text" id="supervisorCargo" placeholder="Ejemplo: Supervisor ES">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="asunto">Asunto</label>
-            <textarea id="asunto" rows="2" placeholder="Ejemplo: Fiscalización de seguridad..., operado por {{empresa}}"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="referencia">Referencia</label>
-            <input type="text" id="referencia" placeholder="Ejemplo: Registro de Hidrocarburos N° {{registro}}">
-          </div>
-        </section>
-
-        <!-- 2. OBJETIVO -->
-        <section class="card">
-          <div class="card-titulo"><span class="paso">2</span><h3>Objetivo</h3></div>
-          <div class="form-group">
-            <label for="objetivo">Objetivo de la visita de fiscalización</label>
-            <textarea id="objetivo" rows="4" placeholder="El objetivo de la presente visita de fiscalización es..."></textarea>
-          </div>
-        </section>
-
-        <!-- 3. ANTECEDENTES -->
-        <section class="card">
-          <div class="card-titulo"><span class="paso">3</span><h3>Antecedentes</h3></div>
-          <p class="nota">Cambie solo los datos que necesite: el texto de cada punto se arma solo en la vista previa. Expediente, empresa, placa, registro, Carta Línea, fecha de la visita y fecha del informe se cambian en Datos generales.</p>
-
-          <div class="bloque-ant">
-            <h4 class="bloque-ant-titulo">2.1 Registro de Hidrocarburos del agente fiscalizado</h4>
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="fechaRegistro">Fecha de obtención del registro</label>
-                <input type="date" id="fechaRegistro">
-              </div>
-              <div class="form-group">
-                <label for="tracto">Placa del tracto</label>
-                <input type="text" id="tracto" placeholder="Ejemplo: XYZ-000">
-              </div>
-              <div class="form-group">
-                <label for="capacidad">Capacidad autorizada (galones)</label>
-                <input type="text" id="capacidad" placeholder="Ejemplo: 9000">
-              </div>
-              <div class="form-group">
-                <label for="compartimientos">Compartimientos</label>
-                <input type="text" id="compartimientos" placeholder="Ejemplo: seis">
-              </div>
-              <div class="form-group">
-                <label for="direccionLegal">Dirección legal</label>
-                <input type="text" id="direccionLegal" placeholder="Ejemplo: Dirección ficticia, Huánuco">
-              </div>
-              <div class="form-group">
-                <label for="distrito">Distrito</label>
-                <input type="text" id="distrito" placeholder="Ejemplo: CHURUBAMBA">
-              </div>
-            </div>
-          </div>
-          <div class="bloque-ant">
-            <h4 class="bloque-ant-titulo">2.2 Resolución de la Autoridad de Fiscalización</h4>
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="resolucionNumero">Número de la resolución</label>
-                <input type="text" id="resolucionNumero" placeholder="Ejemplo: 000-2026-OS-GSE/DSR-OR HUÁNUCO">
-              </div>
-              <div class="form-group">
-                <label for="resolucionFecha">Fecha de la resolución</label>
-                <input type="date" id="resolucionFecha">
-              </div>
-            </div>
-          </div>
-          <div class="bloque-ant">
-            <h4 class="bloque-ant-titulo">2.3 Carta del agente fiscalizado</h4>
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="cartaFecha">Fecha de la carta</label>
-                <input type="date" id="cartaFecha">
-              </div>
-              <div class="form-group">
-                <label for="lugarFiscalizacion">Lugar de la fiscalización</label>
-                <input type="text" id="lugarFiscalizacion" placeholder="Ejemplo: la Carretera Central..., Km 23+270">
-              </div>
-            </div>
-          </div>
-          <div class="bloque-ant">
-            <h4 class="bloque-ant-titulo">2.4 Asignación de la Carta Línea</h4>
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="asignacionFecha">Fecha de la asignación</label>
-                <input type="date" id="asignacionFecha">
-              </div>
-              <div class="form-group">
-                <label for="especialista">Especialista regional</label>
-                <input type="text" id="especialista" placeholder="Ejemplo: Luis Modelo Fernández">
-              </div>
-              <div class="form-group">
-                <label for="asignacionNumero">Número de asignación</label>
-                <input type="text" id="asignacionNumero" placeholder="Ejemplo: 00000-2026">
-              </div>
-            </div>
-          </div>
-          <div class="bloque-ant">
-            <h4 class="bloque-ant-titulo">2.5 Visita de fiscalización</h4>
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="fiscalizador">Fiscalizador que realizó la visita</label>
-                <input type="text" id="fiscalizador" placeholder="Ejemplo: Carlos Ejemplo Rivera">
-              </div>
-            </div>
-          </div>
-          <div class="bloque-ant">
-            <h4 class="bloque-ant-titulo">2.6 Elaboración del informe</h4>
-            <p class="nota">Usa la fecha del informe, la Carta Línea y el expediente de Datos generales.</p>
-          </div>
-        </section>
-
-        <!-- 4. BASE LEGAL -->
-        <section class="card">
-          <div class="card-titulo"><span class="paso">4</span><h3>Base legal</h3></div>
-          <div class="form-group">
-            <label for="baseLegal">Normas aplicables <span class="nota">· una por línea</span></label>
-            <textarea id="baseLegal" rows="7" placeholder="Ley Nº 26734, Ley de Creación de ..."></textarea>
-          </div>
-        </section>
-
-        <!-- 5. DESCRIPCIÓN GENERAL (con imagen) -->
-        <section class="card">
-          <div class="card-titulo"><span class="paso">5</span><h3>Descripción general</h3></div>
-
-          <div class="form-group">
-            <label for="descripcionGeneral">Descripción general del medio de transporte <span class="nota">· punto 4.1</span></label>
-            <textarea id="descripcionGeneral" rows="3"></textarea>
-          </div>
-
-          <div class="bloque-imagen">
-            <div class="form-group">
-              <label for="imagenTitulo">Título de la imagen</label>
-              <input type="text" id="imagenTitulo" placeholder="IMAGEN N° 01 CONSULTA EN LÍNEA DEL REGISTRO DE HIDROCARBUROS">
-            </div>
-
-            <div class="form-group">
-              <label for="imagenArchivo">Imagen de la consulta <span class="nota">· se reduce a 1000 px de ancho como máximo</span></label>
-              <div class="imagen-carga">
-                <input type="file" id="imagenArchivo" accept="image/*">
-                <button type="button" id="btnQuitarImagen" class="btn-mini btn-quitar" hidden>Quitar imagen</button>
-              </div>
-              <p id="imagenInfo" class="nota imagen-info">Sin imagen: el recuadro no se mostrará en el informe.</p>
-              <img id="imagenMiniatura" class="imagen-miniatura" alt="Imagen cargada" hidden>
-            </div>
-
-            <div class="form-group">
-              <label for="consultaRegistro">Descripción debajo de la imagen <span class="nota">· acepta marcadores</span></label>
-              <textarea id="consultaRegistro" rows="3"></textarea>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="direccion">Dirección donde se realizó la fiscalización <span class="nota">· punto 4.2</span></label>
-            <textarea id="direccion" rows="3"></textarea>
-          </div>
-        </section>
-
-        <!-- 6. VISITA DE FISCALIZACIÓN -->
-        <section class="card">
-          <div class="card-titulo"><span class="paso">6</span><h3>Visita de fiscalización</h3></div>
-
-          <div class="form-group">
-            <label for="analisis">Desarrollo de la visita <span class="nota">· párrafo previo a la tabla</span></label>
-            <textarea id="analisis" rows="5" placeholder="Con fecha ..., siendo las ... horas, se inició la fiscalización..."></textarea>
-          </div>
-
-          <label>Tabla N° 01 – Hechos constatados en el Acta de Fiscalización</label>
-          <div id="hechos" class="hechos-editor"></div>
-          <button type="button" id="agregarHecho" class="btn-mini btn-agregar">+ Agregar fila</button>
-
-          <div class="form-group">
-            <label for="fuente">Fuente de la tabla</label>
-            <input type="text" id="fuente" placeholder="Acta de Fiscalización ... N° {{expediente}}.">
-          </div>
-
-          <div class="form-group">
-            <label for="cierreVisita">Cierre de la visita</label>
-            <textarea id="cierreVisita" rows="4" placeholder="Culminada la fiscalización, se suscribió el Acta..."></textarea>
-          </div>
-        </section>
-
-        <!-- 7. ANEXOS -->
-        <section class="card">
-          <div class="card-titulo"><span class="paso">7</span><h3>Anexos</h3></div>
-
-          <div class="form-group">
-            <label for="anexoIntro">Texto introductorio</label>
-            <textarea id="anexoIntro" rows="2"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="anexos">Lista de anexos <span class="nota">· uno por línea, se numeran I, II, III...</span></label>
-            <textarea id="anexos" rows="8"></textarea>
-          </div>
-
-          <div class="descargos">
-            <label class="check" for="tieneDescargo">
-              <input type="checkbox" id="tieneDescargo">
-              ¿El agente fiscalizado presentó descargos?
-            </label>
-
-            <div id="zonaDescargo" hidden>
-              <div class="form-group">
-                <label for="descargos">Evaluación de los descargos <span class="nota">· un punto por línea</span></label>
-                <textarea id="descargos" rows="5" placeholder="Describa los descargos presentados y su evaluación..."></textarea>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- 8. CONCLUSIONES -->
-        <section class="card">
-          <div class="card-titulo"><span class="paso">8</span><h3>Conclusiones</h3></div>
-          <div class="form-group">
-            <label for="conclusiones">Conclusiones de la fiscalización <span class="nota">· una por línea</span></label>
-            <textarea id="conclusiones" rows="4" placeholder="Ingrese las conclusiones del informe..."></textarea>
-          </div>
-        </section>
-
-        <!-- 9. RECOMENDACIONES -->
-        <section class="card">
-          <div class="card-titulo"><span class="paso">9</span><h3>Recomendaciones</h3></div>
-          <div class="form-group">
-            <label for="recomendaciones">Recomendaciones finales <span class="nota">· una por línea</span></label>
-            <textarea id="recomendaciones" rows="5" placeholder="Ingrese las recomendaciones correspondientes..."></textarea>
-          </div>
-        </section>
-
-        <!-- 10. FIRMAS -->
-        <section class="card">
-          <div class="card-titulo"><span class="paso">10</span><h3>Firmas</h3></div>
-
-          <div class="form-grid">
-            <div class="firma-box">
-              <h4>Representante legal</h4>
-              <div class="form-group">
-                <label for="firma1Nombre">Nombre</label>
-                <input type="text" id="firma1Nombre">
-              </div>
-              <div class="form-group">
-                <label for="firma1Documento">Documento</label>
-                <input type="text" id="firma1Documento" placeholder="DNI N° 00000000">
-              </div>
-              <div class="form-group">
-                <label for="firma1Cargo">Cargo</label>
-                <input type="text" id="firma1Cargo" placeholder="Representante Legal">
-              </div>
-              <div class="form-group">
-                <label for="firma1Empresa">Empresa</label>
-                <input type="text" id="firma1Empresa">
-              </div>
-            </div>
-
-            <div class="firma-box">
-              <h4>Fiscalizador</h4>
-              <div class="form-group">
-                <label for="firma2Nombre">Nombre</label>
-                <input type="text" id="firma2Nombre">
-              </div>
-              <div class="form-group">
-                <label for="firma2Documento">Documento</label>
-                <input type="text" id="firma2Documento" placeholder="CIP N° 000000">
-              </div>
-              <div class="form-group">
-                <label for="firma2Cargo">Cargo</label>
-                <input type="text" id="firma2Cargo" placeholder="Fiscalizador">
-              </div>
-              <div class="form-group">
-                <label for="firma2Empresa">Empresa</label>
-                <input type="text" id="firma2Empresa">
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ACCIONES -->
-        <div class="acciones">
-          <button type="submit" id="btnGuardar" class="btn btn-guardar">Guardar informe</button>
-          <div class="acciones-secundarias">
-            <button type="button" id="btnModelo" class="btn btn-linea">Nuevo con texto modelo</button>
-            <button type="reset" class="btn btn-linea">Limpiar formulario</button>
-          </div>
-        </div>
-
-        <p id="estado" class="estado" role="status"></p>
-
-      </form>
-
-      <section class="card" id="informes">
-        <div class="card-titulo"><span class="paso paso-icono">≡</span><h3>Informes registrados</h3></div>
-        <div id="lista">Cargando informes...</div>
-      </section>
-
-    </div>
-
-    <!-- ===================== COLUMNA DERECHA: VISTA PREVIA ===================== -->
-    <aside class="columna-vista">
-      <section id="vista-previa" class="vista-panel">
-        <div class="vista-cab">
-          <h2>Vista previa</h2>
-          <div class="vista-botones">
-            <button type="button" id="btnWord" class="btn-mini btn-word">Descargar en Word</button>
-            <button type="button" id="btnImprimir" class="btn-mini btn-imprimir">Imprimir / PDF</button>
-          </div>
-        </div>
-        <div class="vista-marco" id="vistaMarco">
-          <div id="vista" class="vista-previa hoja">Seleccione o guarde un informe para visualizarlo.</div>
-        </div>
-      </section>
+      <p class="lateral-pie">Proyecto académico · datos ficticios</p>
     </aside>
 
-  </main>
+    <main class="contenedor">
+
+      <!-- ===================== FORMULARIO ===================== -->
+      <div class="columna-form" id="seccionRegistro">
+
+        <div class="intro">
+          <p class="intro-etiqueta">Nuevo documento</p>
+          <h2 id="tituloForm">Registro de informe de fiscalización</h2>
+          <p class="sub">Complete cada sección. La vista previa se actualiza mientras escribe.</p>
+
+          <div class="aviso" id="avisoMarcadores">
+            <button type="button" class="aviso-cerrar" id="cerrarAviso" aria-label="Cerrar aviso">×</button>
+            <span class="aviso-icono" aria-hidden="true">✦</span>
+            <div>
+              <strong>Marcadores automáticos.</strong>
+              Escriba <code>{{expediente}}</code>, <code>{{empresa}}</code>, <code>{{placa}}</code> o
+              <code>{{registro}}</code> en cualquier texto y se reemplazarán en todo el informe.
+              Use <code>**texto**</code> para negrita.
+            </div>
+          </div>
+        </div>
+
+        <form id="form" autocomplete="off">
+
+          <!-- 1. DATOS GENERALES -->
+          <section class="card" id="sec-datos">
+            <div class="card-titulo"><span class="paso">01</span><h3>Datos generales</h3></div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="expediente">Número de expediente *</label>
+                <input type="text" id="expediente" placeholder="Ejemplo: 202600000000" required>
+              </div>
+              <div class="form-group">
+                <label for="empresa">Agente fiscalizado / Empresa *</label>
+                <input type="text" id="empresa" placeholder="Ejemplo: Transportes Modelo Demostrativo S.A.C." required>
+              </div>
+              <div class="form-group">
+                <label for="placa">Placa de la unidad vehicular</label>
+                <input type="text" id="placa" placeholder="Ejemplo: ABC-000">
+              </div>
+              <div class="form-group">
+                <label for="registro">N.° de Registro de Hidrocarburos</label>
+                <input type="text" id="registro" placeholder="Ejemplo: 00000-060-000000">
+              </div>
+              <div class="form-group">
+                <label for="numeroInforme">Número de informe</label>
+                <input type="text" id="numeroInforme" placeholder="Ejemplo: 0001-2026">
+              </div>
+              <div class="form-group">
+                <label for="empresaSupervisora">Empresa supervisora</label>
+                <input type="text" id="empresaSupervisora" placeholder="Ejemplo: Supervisión Técnica Demostrativa E.I.R.L.">
+              </div>
+              <div class="form-group">
+                <label for="ciudad">Ciudad</label>
+                <input type="text" id="ciudad" placeholder="Ejemplo: Huánuco">
+              </div>
+              <div class="form-group">
+                <label for="fecha">Fecha del informe</label>
+                <input type="date" id="fecha">
+              </div>
+              <div class="form-group">
+                <label for="cartaLinea">Carta Línea N.°</label>
+                <input type="text" id="cartaLinea" placeholder="Ejemplo: 0000000-0">
+              </div>
+              <div class="form-group">
+                <label for="fechaVisita">Fecha de la visita de fiscalización</label>
+                <input type="date" id="fechaVisita">
+              </div>
+            </div>
+
+            <h4 class="subtitulo">Destinatario, remitente y asunto</h4>
+
+            <div class="form-group">
+              <label for="destinatario">A (destinatario)</label>
+              <input type="text" id="destinatario" placeholder="Ejemplo: Oficina Regional Huánuco">
+            </div>
+
+            <div class="form-group">
+              <label for="copias">Otros destinatarios – C/c <span class="nota">· opcional, va en el recuadro junto al título</span></label>
+              <input type="text" id="copias" placeholder="Ejemplo: Archivo">
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="supervisor">De (supervisor responsable)</label>
+                <input type="text" id="supervisor" placeholder="Ejemplo: Carlos Ejemplo Rivera">
+              </div>
+              <div class="form-group">
+                <label for="supervisorCargo">Cargo del supervisor</label>
+                <input type="text" id="supervisorCargo" placeholder="Ejemplo: Supervisor ES">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="asunto">Asunto</label>
+              <textarea id="asunto" rows="2" placeholder="Ejemplo: Fiscalización de seguridad..., operado por {{empresa}}"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="referencia">Referencia</label>
+              <input type="text" id="referencia" placeholder="Ejemplo: Registro de Hidrocarburos N° {{registro}}">
+            </div>
+          </section>
+
+          <!-- 2. OBJETIVO -->
+          <section class="card" id="sec-objetivo">
+            <div class="card-titulo"><span class="paso">02</span><h3>Objetivo</h3></div>
+            <div class="form-group">
+              <label for="objetivo">Objetivo de la visita de fiscalización</label>
+              <textarea id="objetivo" rows="4" placeholder="El objetivo de la presente visita de fiscalización es..."></textarea>
+            </div>
+          </section>
+
+          <!-- 3. ANTECEDENTES -->
+          <section class="card" id="sec-antecedentes">
+            <div class="card-titulo"><span class="paso">03</span><h3>Antecedentes</h3></div>
+            <p class="nota nota-caja">Cambie solo los datos que necesite: el texto de cada punto se arma solo en la vista previa. Expediente, empresa, placa, registro, Carta Línea, fecha de la visita y fecha del informe se cambian en Datos generales.</p>
+
+            <div class="bloque-ant">
+              <h4 class="bloque-ant-titulo"><span>2.1</span> Registro de Hidrocarburos del agente fiscalizado</h4>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="fechaRegistro">Fecha de obtención del registro</label>
+                  <input type="date" id="fechaRegistro">
+                </div>
+                <div class="form-group">
+                  <label for="tracto">Placa del tracto</label>
+                  <input type="text" id="tracto" placeholder="Ejemplo: XYZ-000">
+                </div>
+                <div class="form-group">
+                  <label for="capacidad">Capacidad autorizada (galones)</label>
+                  <input type="text" id="capacidad" placeholder="Ejemplo: 9000">
+                </div>
+                <div class="form-group">
+                  <label for="compartimientos">Compartimientos</label>
+                  <input type="text" id="compartimientos" placeholder="Ejemplo: seis">
+                </div>
+                <div class="form-group">
+                  <label for="direccionLegal">Dirección legal</label>
+                  <input type="text" id="direccionLegal" placeholder="Ejemplo: Dirección ficticia, Huánuco">
+                </div>
+                <div class="form-group">
+                  <label for="distrito">Distrito</label>
+                  <input type="text" id="distrito" placeholder="Ejemplo: CHURUBAMBA">
+                </div>
+              </div>
+            </div>
+            <div class="bloque-ant">
+              <h4 class="bloque-ant-titulo"><span>2.2</span> Resolución de la Autoridad de Fiscalización</h4>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="resolucionNumero">Número de la resolución</label>
+                  <input type="text" id="resolucionNumero" placeholder="Ejemplo: 000-2026-OS-GSE/DSR-OR HUÁNUCO">
+                </div>
+                <div class="form-group">
+                  <label for="resolucionFecha">Fecha de la resolución</label>
+                  <input type="date" id="resolucionFecha">
+                </div>
+              </div>
+            </div>
+            <div class="bloque-ant">
+              <h4 class="bloque-ant-titulo"><span>2.3</span> Carta del agente fiscalizado</h4>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="cartaFecha">Fecha de la carta</label>
+                  <input type="date" id="cartaFecha">
+                </div>
+                <div class="form-group">
+                  <label for="lugarFiscalizacion">Lugar de la fiscalización</label>
+                  <input type="text" id="lugarFiscalizacion" placeholder="Ejemplo: la Carretera Central..., Km 23+270">
+                </div>
+              </div>
+            </div>
+            <div class="bloque-ant">
+              <h4 class="bloque-ant-titulo"><span>2.4</span> Asignación de la Carta Línea</h4>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="asignacionFecha">Fecha de la asignación</label>
+                  <input type="date" id="asignacionFecha">
+                </div>
+                <div class="form-group">
+                  <label for="especialista">Especialista regional</label>
+                  <input type="text" id="especialista" placeholder="Ejemplo: Luis Modelo Fernández">
+                </div>
+                <div class="form-group">
+                  <label for="asignacionNumero">Número de asignación</label>
+                  <input type="text" id="asignacionNumero" placeholder="Ejemplo: 00000-2026">
+                </div>
+              </div>
+            </div>
+            <div class="bloque-ant">
+              <h4 class="bloque-ant-titulo"><span>2.5</span> Visita de fiscalización</h4>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="fiscalizador">Fiscalizador que realizó la visita</label>
+                  <input type="text" id="fiscalizador" placeholder="Ejemplo: Carlos Ejemplo Rivera">
+                </div>
+              </div>
+            </div>
+            <div class="bloque-ant">
+              <h4 class="bloque-ant-titulo"><span>2.6</span> Elaboración del informe</h4>
+              <p class="nota">Usa la fecha del informe, la Carta Línea y el expediente de Datos generales.</p>
+            </div>
+          </section>
+
+          <!-- 4. BASE LEGAL -->
+          <section class="card" id="sec-base">
+            <div class="card-titulo"><span class="paso">04</span><h3>Base legal</h3></div>
+            <div class="form-group">
+              <label for="baseLegal">Normas aplicables <span class="nota">· una por línea</span></label>
+              <textarea id="baseLegal" rows="7" placeholder="Ley Nº 26734, Ley de Creación de ..."></textarea>
+            </div>
+          </section>
+
+          <!-- 5. DESCRIPCIÓN GENERAL (con imagen) -->
+          <section class="card" id="sec-descripcion">
+            <div class="card-titulo"><span class="paso">05</span><h3>Descripción general</h3></div>
+
+            <div class="form-group">
+              <label for="descripcionGeneral">Descripción general del medio de transporte <span class="nota">· punto 4.1</span></label>
+              <textarea id="descripcionGeneral" rows="3"></textarea>
+            </div>
+
+            <div class="bloque-imagen">
+              <div class="form-group">
+                <label for="imagenTitulo">Título de la imagen</label>
+                <input type="text" id="imagenTitulo" placeholder="IMAGEN N° 01 CONSULTA EN LÍNEA DEL REGISTRO DE HIDROCARBUROS">
+              </div>
+
+              <div class="form-group">
+                <label for="imagenArchivo">Imagen de la consulta <span class="nota">· se reduce a 1000 px de ancho como máximo</span></label>
+                <div class="imagen-carga">
+                  <input type="file" id="imagenArchivo" accept="image/*">
+                  <button type="button" id="btnQuitarImagen" class="btn-mini btn-quitar" hidden>Quitar imagen</button>
+                </div>
+                <p id="imagenInfo" class="nota imagen-info">Sin imagen: el recuadro no se mostrará en el informe.</p>
+                <img id="imagenMiniatura" class="imagen-miniatura" alt="Imagen cargada" hidden>
+              </div>
+
+              <div class="form-group">
+                <label for="consultaRegistro">Descripción debajo de la imagen <span class="nota">· acepta marcadores</span></label>
+                <textarea id="consultaRegistro" rows="3"></textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="direccion">Dirección donde se realizó la fiscalización <span class="nota">· punto 4.2</span></label>
+              <textarea id="direccion" rows="3"></textarea>
+            </div>
+          </section>
+
+          <!-- 6. VISITA DE FISCALIZACIÓN -->
+          <section class="card" id="sec-visita">
+            <div class="card-titulo"><span class="paso">06</span><h3>Visita de fiscalización</h3></div>
+
+            <div class="form-group">
+              <label for="analisis">Desarrollo de la visita <span class="nota">· párrafo previo a la tabla</span></label>
+              <textarea id="analisis" rows="5" placeholder="Con fecha ..., siendo las ... horas, se inició la fiscalización..."></textarea>
+            </div>
+
+            <label class="etiqueta-tabla">Tabla N° 01 – Hechos constatados en el Acta de Fiscalización</label>
+            <div id="hechos" class="hechos-editor"></div>
+            <button type="button" id="agregarHecho" class="btn-mini btn-agregar">+ Agregar fila</button>
+
+            <div class="form-group">
+              <label for="fuente">Fuente de la tabla</label>
+              <input type="text" id="fuente" placeholder="Acta de Fiscalización ... N° {{expediente}}.">
+            </div>
+
+            <div class="form-group">
+              <label for="cierreVisita">Cierre de la visita</label>
+              <textarea id="cierreVisita" rows="4" placeholder="Culminada la fiscalización, se suscribió el Acta..."></textarea>
+            </div>
+          </section>
+
+          <!-- 7. ANEXOS -->
+          <section class="card" id="sec-anexos">
+            <div class="card-titulo"><span class="paso">07</span><h3>Anexos</h3></div>
+
+            <div class="form-group">
+              <label for="anexoIntro">Texto introductorio</label>
+              <textarea id="anexoIntro" rows="2"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="anexos">Lista de anexos <span class="nota">· uno por línea, se numeran I, II, III...</span></label>
+              <textarea id="anexos" rows="8"></textarea>
+            </div>
+
+            <div class="descargos">
+              <label class="check" for="tieneDescargo">
+                <input type="checkbox" id="tieneDescargo">
+                ¿El agente fiscalizado presentó descargos?
+              </label>
+
+              <div id="zonaDescargo" hidden>
+                <div class="form-group">
+                  <label for="descargos">Evaluación de los descargos <span class="nota">· un punto por línea</span></label>
+                  <textarea id="descargos" rows="5" placeholder="Describa los descargos presentados y su evaluación..."></textarea>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 8. CONCLUSIONES -->
+          <section class="card" id="sec-conclusiones">
+            <div class="card-titulo"><span class="paso">08</span><h3>Conclusiones</h3></div>
+            <div class="form-group">
+              <label for="conclusiones">Conclusiones de la fiscalización <span class="nota">· una por línea</span></label>
+              <textarea id="conclusiones" rows="4" placeholder="Ingrese las conclusiones del informe..."></textarea>
+            </div>
+          </section>
+
+          <!-- 9. RECOMENDACIONES -->
+          <section class="card" id="sec-recomendaciones">
+            <div class="card-titulo"><span class="paso">09</span><h3>Recomendaciones</h3></div>
+            <div class="form-group">
+              <label for="recomendaciones">Recomendaciones finales <span class="nota">· una por línea</span></label>
+              <textarea id="recomendaciones" rows="5" placeholder="Ingrese las recomendaciones correspondientes..."></textarea>
+            </div>
+          </section>
+
+          <!-- 10. FIRMAS -->
+          <section class="card" id="sec-firmas">
+            <div class="card-titulo"><span class="paso">10</span><h3>Firmas</h3></div>
+
+            <div class="form-grid">
+              <div class="firma-box">
+                <h4>Representante legal</h4>
+                <div class="form-group">
+                  <label for="firma1Nombre">Nombre</label>
+                  <input type="text" id="firma1Nombre">
+                </div>
+                <div class="form-group">
+                  <label for="firma1Documento">Documento</label>
+                  <input type="text" id="firma1Documento" placeholder="DNI N° 00000000">
+                </div>
+                <div class="form-group">
+                  <label for="firma1Cargo">Cargo</label>
+                  <input type="text" id="firma1Cargo" placeholder="Representante Legal">
+                </div>
+                <div class="form-group">
+                  <label for="firma1Empresa">Empresa</label>
+                  <input type="text" id="firma1Empresa">
+                </div>
+              </div>
+
+              <div class="firma-box">
+                <h4>Fiscalizador</h4>
+                <div class="form-group">
+                  <label for="firma2Nombre">Nombre</label>
+                  <input type="text" id="firma2Nombre">
+                </div>
+                <div class="form-group">
+                  <label for="firma2Documento">Documento</label>
+                  <input type="text" id="firma2Documento" placeholder="CIP N° 000000">
+                </div>
+                <div class="form-group">
+                  <label for="firma2Cargo">Cargo</label>
+                  <input type="text" id="firma2Cargo" placeholder="Fiscalizador">
+                </div>
+                <div class="form-group">
+                  <label for="firma2Empresa">Empresa</label>
+                  <input type="text" id="firma2Empresa">
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ACCIONES -->
+          <div class="acciones">
+            <button type="submit" id="btnGuardar" class="btn btn-guardar">Guardar informe</button>
+            <div class="acciones-secundarias">
+              <button type="button" id="btnModelo" class="btn btn-linea">Nuevo con texto modelo</button>
+              <button type="reset" class="btn btn-linea">Limpiar formulario</button>
+            </div>
+            <p id="estado" class="estado" role="status"></p>
+          </div>
+
+        </form>
+
+        <section class="card card-lista" id="informes">
+          <div class="card-titulo"><span class="paso paso-icono">☰</span><h3>Informes registrados</h3></div>
+          <div id="lista">Cargando informes...</div>
+        </section>
+
+      </div>
+
+      <!-- ===================== VISTA PREVIA ===================== -->
+      <aside class="columna-vista">
+        <section id="vista-previa" class="vista-panel">
+          <div class="vista-cab">
+            <h2><span class="punto-vivo" aria-hidden="true"></span>Vista previa</h2>
+            <div class="vista-botones">
+              <button type="button" id="btnWord" class="btn-mini btn-word">Descargar en Word</button>
+              <button type="button" id="btnImprimir" class="btn-mini btn-imprimir">Imprimir / PDF</button>
+            </div>
+          </div>
+          <div class="vista-marco" id="vistaMarco">
+            <div id="vista" class="vista-previa hoja">Seleccione o guarde un informe para visualizarlo.</div>
+          </div>
+        </section>
+      </aside>
+
+    </main>
+  </div>
 
   <script src="app.js"></script>
 </body>

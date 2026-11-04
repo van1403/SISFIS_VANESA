@@ -232,7 +232,7 @@ app.use((err, req, res, next) => {
 
 app.listen(PORT, () => {
  console.log('================================');
- console.log(' SISFIS_RUBY INICIADO');
+ console.log(' SISFIS_VANESA INICIADO');
  console.log(' http://localhost:' + PORT);
  console.log('================================');
 });

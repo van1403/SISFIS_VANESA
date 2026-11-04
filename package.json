@@ -1,5 +1,5 @@
 {
-  "name": "sisfis_ruby",
+  "name": "sisfis_vanesa",
   "version": "1.0.0",
   "description": "Sistema de informes de fiscalización (proyecto académico)",
   "main": "server.js",
@@ -7,7 +7,7 @@
     "start": "node server.js"
   },
   "keywords": [],
-  "author": "Ruby",
+  "author": "Vanesa",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
