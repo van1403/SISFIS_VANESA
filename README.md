@@ -1,4 +1,4 @@
-# SISFIS_RUBY
+# SISFIS_VANESA
 
 Sistema de informes de fiscalización. Proyecto académico que usa solo datos ficticios.
 
@@ -20,13 +20,13 @@ Permite crear, editar, listar y eliminar informes, con vista previa en tiempo re
 1. Clonar el repositorio:
 
    ```bash
-   git clone https://github.com/rubymego/SISFIS_RUBY.git
+   git clone <url-del-repositorio>/SISFIS_VANESA.git
    ```
 
 2. Entrar a la carpeta del proyecto:
 
    ```bash
-   cd SISFIS_RUBY
+   cd SISFIS_VANESA
    ```
 
 3. Instalar las dependencias:
@@ -45,4 +45,4 @@ Permite crear, editar, listar y eliminar informes, con vista previa en tiempo re
 
 ## Autora
 
-Ruby
+Vanesa
